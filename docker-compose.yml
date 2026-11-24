@@ -1,0 +1,15 @@
+services:
+  toolkit:
+    build: .
+    container_name: devops-toolkit
+    environment:
+      - INTERVAL=30
+      - KEEP_BACKUPS=5
+      - CPU_LIMIT=80
+      - MEM_LIMIT=80
+      - DISK_LIMIT=80
+    volumes:
+      - ./logs:/app/logs
+      - ./backups:/app/backups
+      - ./data:/app/data
+    restart: unless-stopped
